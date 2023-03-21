@@ -108,7 +108,7 @@ const restartGame = () => {
 const clearCells = () => {
     [...cells].forEach((cell) => {
         cell.innerHTML = "";
-        cell.classList.remove(["OPlayer", "XPlayer"]);
+        cell.classList.remove("OPlayer", "XPlayer");
     });
 };
 
