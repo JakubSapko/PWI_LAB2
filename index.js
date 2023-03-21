@@ -8,25 +8,32 @@ let currentPlayer = "X";
 let opponent = "H";
 let gameOver = false;
 
+// game start
 optionForm.addEventListener("submit", (e) => {
     const optionData = new FormData(optionForm);
     for (const entry of optionData) {
-        console.log(entry);
+        // incoming data is a list of strings => ['option', value]
+        opponent = entry[1];
     }
     submitButton.disabled = true;
     startGame();
     e.preventDefault();
 });
 
+const makeComputerMove = () => {
+    const emptyCells = Array.from(cells).filter(cell => cell.innerHTML === '');
+    let move = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+	move.innerHTML = 'O';
+}
+
 // main game "loop"
 const startGame = () => {
     for (let i = 0; i < cells.length; i++) {
         cells[i].addEventListener("click", () => {
-            console.log('elo');
             if (!gameOver && cells[i].innerHTML === "") {
                 cells[i].innerHTML = currentPlayer;
                 checkWinner();
-                if (opponent === "computer" && !gameOver) {
+                if (opponent === "C" && !gameOver) {
                     makeComputerMove();
                 } else {
                     currentPlayer = currentPlayer === "X" ? "O" : "X";
