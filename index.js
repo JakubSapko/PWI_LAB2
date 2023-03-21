@@ -24,6 +24,7 @@ const makeComputerMove = () => {
     const emptyCells = Array.from(cells).filter(cell => cell.innerHTML === '');
     let move = emptyCells[Math.floor(Math.random() * emptyCells.length)];
 	move.innerHTML = 'O';
+    checkWinner('O');
 }
 
 // main game "loop"
@@ -32,7 +33,7 @@ const startGame = () => {
         cells[i].addEventListener("click", () => {
             if (!gameOver && cells[i].innerHTML === "") {
                 cells[i].innerHTML = currentPlayer;
-                checkWinner();
+                checkWinner('X');
                 if (opponent === "C" && !gameOver) {
                     makeComputerMove();
                 } else {
@@ -44,8 +45,9 @@ const startGame = () => {
 };
 
 const winCondition = (a, b, c) => cells[a].innerHTML !== '' && cells[a].innerHTML === cells[b].innerHTML && cells[b].innerHTML === cells[c].innerHTML;
+const tieCondition = () => !([...cells].map((cell) => cell.innerHTML).includes(""));
 
-const checkWinner = () => {
+const checkWinner = (player) => {
     const winningPositions = [
 		[0, 1, 2],
 		[3, 4, 5],
@@ -58,9 +60,13 @@ const checkWinner = () => {
 	];
     for (let i = 0; i < winningPositions.length; i++){
         const [a, b, c] = winningPositions[i];
+        if (tieCondition()) {
+            gameOver = true;
+            statusDisplay.innerHTML = "It's a tie!"
+        }
         if (winCondition(a, b, c)){
             gameOver = true;
-            statusDisplay.innerHTML = `${currentPlayer} wins!`;
+            statusDisplay.innerHTML = `${player} wins!`;
         }
     }
 }
