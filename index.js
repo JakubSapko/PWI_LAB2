@@ -31,6 +31,8 @@ optionForm.addEventListener("submit", (e) => {
 });
 
 const makeComputerMove = () => {
+    console.log(currentPlayer);
+    console.log(computerCharacter);
     const emptyCells = Array.from(cells).filter(
         (cell) => cell.innerHTML === ""
     );
@@ -67,8 +69,8 @@ const winCondition = (a, b, c) =>
     cells[a].innerHTML !== "" &&
     cells[a].innerHTML === cells[b].innerHTML &&
     cells[b].innerHTML === cells[c].innerHTML;
-const tieCondition = () =>
-    ![...cells].map((cell) => cell.innerHTML).includes("");
+
+const tieCondition = () => ![...cells].map((cell) => cell.innerHTML).includes("");
 
 const checkWinner = (player) => {
     const winningPositions = [
@@ -106,7 +108,7 @@ const restartGame = () => {
 const clearCells = () => {
     [...cells].forEach((cell) => {
         cell.innerHTML = "";
-        cell.classList.remove();
+        cell.classList.remove(["OPlayer", "XPlayer"]);
     });
 };
 
