@@ -1,5 +1,5 @@
 const statusDisplay = document.querySelector(".game--status");
-const optionForm = document.querySelector(".option--form");
+const optionForm = document.getElementById('optionForm');
 const submitButton = document.getElementById("formSubmit");
 const cells = document.getElementsByClassName("cell");
 
@@ -12,10 +12,11 @@ let gameOver = false;
 // game start
 optionForm.addEventListener("submit", (e) => {
     const optionData = new FormData(optionForm);
+
     for (const entry of optionData) {
+        // incoming data is a list of strings => ['option', value]
         const dataKey = entry[0];
         const dataValue = entry[1];
-        // incoming data is a list of strings => ['option', value]
         if (dataKey === 'option'){
             opponent = dataValue;
         }
@@ -24,6 +25,7 @@ optionForm.addEventListener("submit", (e) => {
             computerCharacter = dataValue === "X" ? "O" : "X"
         }
     }
+    console.log('tiu')
     submitButton.disabled = true;
     startGame();
     e.preventDefault();
@@ -79,3 +81,22 @@ const checkWinner = (player) => {
         }
     }
 }
+
+
+const restartGame = () => {
+    clearCells();
+    clearForm();
+    clearDisplay();
+    gameOver = false;
+}
+
+const clearCells = () => {
+    [...cells].forEach((cell) => cell.innerHTML = '');
+}
+
+const clearForm = () => {
+    submitButton.disabled = false;
+    optionForm.reset();
+}
+
+const clearDisplay = () => statusDisplay.innerHTML = '';

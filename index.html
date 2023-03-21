@@ -11,7 +11,7 @@
         <section>
             <h1 class="game--title">Tic Tac Toe</h1>
             <h3 class="player--selection">Who do you want to play against?</h3>
-            <form class="option--form">
+            <form id="optionForm">
                 <input
                     type="radio"
                     id="computerOption"
@@ -48,7 +48,7 @@
                 <div data-cell-index="8" class="cell"></div>
             </div>
             <h2 class="game--status"></h2>
-            <button class="game--restart">Restart Game</button>
+            <button class="game--restart" onclick="restartGame()">Restart Game</button>
         </section>
 
         <script src="index.js"></script>
