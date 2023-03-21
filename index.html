@@ -1,14 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <section>
+            <h1 class="game--title">Tic Tac Toe</h1>
+            <h3 class="player--selection">Who do you want to play against?</h3>
+            <form class="option--form">
+                <fieldset>
+                    <input
+                        type="radio"
+                        id="computerOption"
+                        name="option"
+                        value="C"
+                    />
+                    <label for="computerOption">Computer</label>
+                    <input
+                        type="radio"
+                        id="humanOption"
+                        name="option"
+                        value="H"
+                    />
+                    <label for="humanOption">Another person</label>
+                    <button type="submit" id="formSubmit">Submit</button>
+                </fieldset>
+            </form>
 
-    <script src="index.js"></script>
-</body>
+            <div class="game--container">
+                <div data-cell-index="0" class="cell"></div>
+                <div data-cell-index="1" class="cell"></div>
+                <div data-cell-index="2" class="cell"></div>
+                <div data-cell-index="3" class="cell"></div>
+                <div data-cell-index="4" class="cell"></div>
+                <div data-cell-index="5" class="cell"></div>
+                <div data-cell-index="6" class="cell"></div>
+                <div data-cell-index="7" class="cell"></div>
+                <div data-cell-index="8" class="cell"></div>
+            </div>
+            <h2 class="game--status"></h2>
+            <button class="game--restart">Restart Game</button>
+        </section>
+
+        <script src="index.js"></script>
+    </body>
 </html>
