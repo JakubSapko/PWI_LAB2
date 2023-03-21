@@ -12,21 +12,28 @@
             <h1 class="game--title">Tic Tac Toe</h1>
             <h3 class="player--selection">Who do you want to play against?</h3>
             <form class="option--form">
-                    <input
-                        type="radio"
-                        id="computerOption"
-                        name="option"
-                        value="C"
-                    />
-                    <label for="computerOption">Computer</label>
-                    <input
-                        type="radio"
-                        id="humanOption"
-                        name="option"
-                        value="H"
-                    />
-                    <label for="humanOption">Another person</label>
-                    <button type="submit" id="formSubmit">Submit</button>
+                <input
+                    type="radio"
+                    id="computerOption"
+                    name="option"
+                    value="C"
+                />
+                <label for="computerOption">Computer</label>
+                <input type="radio" id="humanOption" name="option" value="H" />
+                <label for="humanOption">Another person</label>
+                <!-- choosing a character you want to play as -->
+                <h3>What character do you want to play as?</h3>
+                <input
+                    type="radio"
+                    id="xOption"
+                    name="character"
+                    value="X"
+                />
+                <label for="xOption">X</label>
+                <input type="radio" id="oOption" name="character" value="O" />
+                <label for="oOption">O</label>
+                <br/>
+                <button type="submit" id="formSubmit">Submit</button>
             </form>
 
             <div class="game--container">

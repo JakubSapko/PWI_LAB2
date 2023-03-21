@@ -4,6 +4,7 @@ const submitButton = document.getElementById("formSubmit");
 const cells = document.getElementsByClassName("cell");
 
 let currentPlayer = "X";
+let computerCharacter = '';
 // H - Human, C - Computer
 let opponent = "H";
 let gameOver = false;
@@ -12,8 +13,16 @@ let gameOver = false;
 optionForm.addEventListener("submit", (e) => {
     const optionData = new FormData(optionForm);
     for (const entry of optionData) {
+        const dataKey = entry[0];
+        const dataValue = entry[1];
         // incoming data is a list of strings => ['option', value]
-        opponent = entry[1];
+        if (dataKey === 'option'){
+            opponent = dataValue;
+        }
+        if (dataKey === 'character') {
+            currentPlayer = dataValue;
+            computerCharacter = dataValue === "X" ? "O" : "X"
+        }
     }
     submitButton.disabled = true;
     startGame();
@@ -23,8 +32,8 @@ optionForm.addEventListener("submit", (e) => {
 const makeComputerMove = () => {
     const emptyCells = Array.from(cells).filter(cell => cell.innerHTML === '');
     let move = emptyCells[Math.floor(Math.random() * emptyCells.length)];
-	move.innerHTML = 'O';
-    checkWinner('O');
+	move.innerHTML = computerCharacter;
+    checkWinner(computerCharacter);
 }
 
 // main game "loop"
@@ -33,7 +42,7 @@ const startGame = () => {
         cells[i].addEventListener("click", () => {
             if (!gameOver && cells[i].innerHTML === "") {
                 cells[i].innerHTML = currentPlayer;
-                checkWinner('X');
+                checkWinner(currentPlayer);
                 if (opponent === "C" && !gameOver) {
                     makeComputerMove();
                 } else {
