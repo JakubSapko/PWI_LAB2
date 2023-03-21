@@ -25,7 +25,6 @@ optionForm.addEventListener("submit", (e) => {
             computerCharacter = dataValue === "X" ? "O" : "X"
         }
     }
-    console.log('tiu')
     submitButton.disabled = true;
     startGame();
     e.preventDefault();
