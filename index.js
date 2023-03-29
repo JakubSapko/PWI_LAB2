@@ -31,8 +31,6 @@ optionForm.addEventListener("submit", (e) => {
 });
 
 const makeComputerMove = () => {
-    console.log(currentPlayer);
-    console.log(computerCharacter);
     const emptyCells = Array.from(cells).filter(
         (cell) => cell.innerHTML === ""
     );
@@ -45,7 +43,6 @@ const makeComputerMove = () => {
 // main game "loop"
 const startGame = () => {
     if (currentPlayer && !gameOver) {
-        console.log("dupa");
         for (let i = 0; i < cells.length; i++) {
             cells[i].addEventListener("click", () => handleGameClick(i));
         }
